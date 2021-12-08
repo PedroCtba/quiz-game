@@ -8,4 +8,6 @@ question_bank = [(Question(dic['text'], dic['answer'])) for dic in question_data
 
 # init quiz brain
 quiz = QuizBrain(question_bank)
-quiz.ask()
+
+while quiz.keep_asking():
+  quiz.ask()

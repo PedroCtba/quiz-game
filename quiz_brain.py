@@ -8,24 +8,24 @@ class QuizBrain:
 
     def ask(self):
         current_q = self.question_number
-        self.question_number += 1
-        
         reply = input(f'{self.question_list[current_q].text} (True/False): ')
         self.check(reply, self.question_list[current_q].answer)
+        self.question_number += 1
         
 
     def keep_asking(self):
-        if self.question_number <= len(self.question_list):
+        if self.question_number < len(self.question_list):
             return True
         else:
+            print(f'You finished the quiz, your score was ({self.score}/{self.question_number})')
             return False
 
 
     def check(self, reply, current_a):
         if reply.lower() == current_a.lower():
             self.score += 1
-            print(f'You are right! Your current score is {self.score}/{self.question_number - 1}')
+            print(f'You are right! Your current score is {self.score}/{self.question_number + 1}')
             return True
         else:
-            print(f'Sorry that"s wrong :( Your current score is {self.score}/{self.question_number - 1}')
+            print(f'Sorry that"s wrong! Your current score is {self.score}/{self.question_number + 1}')
             return False
